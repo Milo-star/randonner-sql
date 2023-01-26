@@ -13,7 +13,8 @@
 			// Insertion des données dans la table "hiking"
 			$query = "INSERT INTO hiking (name, difficulty, distance, duration, height_difference) VALUES (:name, :difficulty, :distance, :duration, :height_difference)";
 			$stmt = $pdo->prepare($query);
-			$stmt->execute(array(':name' => $name, 
+			$stmt->execute(array(
+							':name' => $name, 
 							':difficulty' => $difficulty,
 							':distance' => $distance,
 							':duration' => $durer,

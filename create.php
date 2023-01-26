@@ -9,16 +9,18 @@
 			$distance = $_POST['distance'];
 			$durer = $_POST['duration'];
 			$deniveler = $_POST['height_difference'];
+			$available = $_POST['available'];
 
 			// Insertion des données dans la table "hiking"
-			$query = "INSERT INTO hiking (name, difficulty, distance, duration, height_difference) VALUES (:name, :difficulty, :distance, :duration, :height_difference)";
+			$query = "INSERT INTO hiking (name, difficulty, distance, duration, height_difference, available) VALUES (:name, :difficulty, :distance, :duration, :height_difference, :available)";
 			$stmt = $pdo->prepare($query);
 			$stmt->execute(array(
 							':name' => $name, 
 							':difficulty' => $difficulty,
 							':distance' => $distance,
 							':duration' => $durer,
-							':height_difference' => $deniveler));
+							':height_difference' => $deniveler,
+							':available' => $available));
 			
 			session_start();
 			$_SESSION['success_message'] = "La randonnée a été ajoutée avec succès !";
@@ -71,6 +73,13 @@
 		<div>
 			<label for="height_difference">Dénivelé</label>
 			<input type="text" name="height_difference" value="">
+		</div>
+		<div>
+			<label for="available">Disponible</label>
+			<select name="available">
+				<option value="1">Oui</option>
+				<option value="0">Non</option>
+			</select>
 		</div>
 		<button type="submit" name="button">Envoyer</button>
 	</form>

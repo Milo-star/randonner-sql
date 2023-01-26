@@ -2,10 +2,10 @@
     include "connectdb.php";
 
     if(isset($_POST['button'])) {
-        if(!empty($_POST['name']) && !empty($_POST['difficulty']) && !empty($_POST['distance']) && !empty($_POST['duration']) && !empty($_POST['height_difference']) && !empty($_GET['id'])) {
-            $query = "UPDATE hiking SET name = :name, difficulty = :difficulty, distance = :distance, duration = :duration, height_difference = :height_difference WHERE id = :id";
+        if(!empty($_POST['name']) && !empty($_POST['difficulty']) && !empty($_POST['distance']) && !empty($_POST['duration']) && !empty($_POST['height_difference']) && isset($_POST['available']) && !empty($_GET['id'])) {
+            $query = "UPDATE hiking SET name = :name, difficulty = :difficulty, distance = :distance, duration = :duration, height_difference = :height_difference, available = :available WHERE id = :id";
             $stmt = $pdo->prepare($query);
-            $stmt->execute(array(':name' => $_POST['name'], ':difficulty' => $_POST['difficulty'], ':distance' => $_POST['distance'], ':duration' => $_POST['duration'], ':height_difference' => $_POST['height_difference'], ':id' => $_GET['id']));
+            $stmt->execute(array(':name' => $_POST['name'], ':difficulty' => $_POST['difficulty'], ':distance' => $_POST['distance'], ':duration' => $_POST['duration'], ':height_difference' => $_POST['height_difference'], ':available' => $_POST['available'], ':id' => $_GET['id']));
             $_SESSION['success_message'] = "Randonnée modifiée avec succès";
             header("Location: read.php");
         }
@@ -58,6 +58,13 @@
 		<div>
 			<label for="height_difference">Dénivelé</label>
 			<input type="text" name="height_difference" value="<?= $row['height_difference'] ?>">
+		</div>
+		<div>
+			<label for="available">Disponible</label>
+			<select name="available">
+				<option value="1" <?php echo $row['available'] == 1 ? 'selected' : '' ?>>Oui</option>
+				<option value="0" <?php echo $row['available'] == 0 ? 'selected' : '' ?>>Non</option>
+			</select>
 		</div>
 		<button type="submit" name="button">Envoyer</button>
 	</form>

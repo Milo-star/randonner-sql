@@ -1,6 +1,12 @@
 <?php
     include "connectdb.php";
 
+	if(!isset($_SESSION['user_id'])) {
+		// L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+		header('Location: login.php');
+		exit;
+	}
+
     if(isset($_POST['button'])) {
         if(!empty($_POST['name']) && !empty($_POST['difficulty']) && !empty($_POST['distance']) && !empty($_POST['duration']) && !empty($_POST['height_difference']) && isset($_POST['available']) && !empty($_GET['id'])) {
             $query = "UPDATE hiking SET name = :name, difficulty = :difficulty, distance = :distance, duration = :duration, height_difference = :height_difference, available = :available WHERE id = :id";

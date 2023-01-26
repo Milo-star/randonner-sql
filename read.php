@@ -1,5 +1,12 @@
 <?php
     include "connectdb.php";
+
+
+	if(!isset($_SESSION['user_id'])) {
+		// L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+		header('Location: login.php');
+		exit;
+	}
     session_start();
 
     if(isset($_POST['submit_remove'])){

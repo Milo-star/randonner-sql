@@ -16,11 +16,11 @@
         <input type="text" name="username">
       </div>
       <div>
-        <label for="password">Mot de passe </label>
+        <label for="password">Mot de passe</label>
         <input type="password" name="password">
       </div>
       <div>
-        <button type="button" name="button">Se connecter</button>
+        <button type="submit" name="button">Se connecter</button>
       </div>
     </form>
   </body>

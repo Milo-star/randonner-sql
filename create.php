@@ -1,7 +1,8 @@
 <?php
+	session_start();
     include "connectdb.php";
 
-	if(!isset($_SESSION['user_id'])) {
+	if(!isset($_SESSION['id'])) {
 		// L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
 		header('Location: login.php');
 		exit;

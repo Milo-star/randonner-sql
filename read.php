@@ -8,6 +8,7 @@
             $stmt = $pdo->prepare($query);
             $stmt->execute(array(':id' => $_POST['id']));
             $_SESSION['success_message'] = "Randonnée supprimée avec succès";
+			header("Location: read.php");
         }
     }
 

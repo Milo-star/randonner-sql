@@ -1,7 +1,6 @@
 <?php
-	session_start();
     include "connectdb.php";
-
+    session_start();
 	if(!isset($_SESSION['id'])) {
 		// L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
 		header('Location: login.php');
@@ -30,7 +29,6 @@
         echo "</tr>";
     }
 
-    session_start();
     if(isset($_SESSION['success_message'])) {
         echo $_SESSION['success_message'];
         unset($_SESSION['success_message']);
@@ -46,6 +44,6 @@
     <title>Liste des données</title>
 </head>
 <body>
-    
+    <a href="logout.php">Se déconnecter</a>
 </body>
 </html>

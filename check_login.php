@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 session_start();
 
 $host = "localhost";
@@ -9,7 +6,6 @@ $dbname = "becode";
 $username = "my_user";
 $password = "my_password";
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-
 
 // Récupération des informations d'identification de l'utilisateur
 $username = $_POST['username'];
@@ -36,6 +32,4 @@ if ($user && $password === $user['password']) {
     echo "Nom d'utilisateur ou mot de passe incorrect";
     exit;
 }
-
-
 ?>

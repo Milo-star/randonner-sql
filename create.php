@@ -1,7 +1,6 @@
 <?php
-	session_start();
     include "connectdb.php";
-
+	session_start();
 	if(!isset($_SESSION['id'])) {
 		// L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
 		header('Location: login.php');
@@ -90,6 +89,7 @@
 		</div>
 		<button type="submit" name="button">Envoyer</button>
 	</form>
+	<a href="logout.php">Se déconnecter</a>
 </body>
 </html>
 

@@ -28,24 +28,22 @@
 <body>
     <h1>Liste des utilisateurs</h1>
     <table>
-    <thead>
-        <tr>
-        <th>ID</th>
-        <th>Name</th>
-        </tr>
-    </thead>
     <tbody>
         <?php 
             while ($rowClients = $resultClients->fetch()) {
-                echo "<tr>";
-                echo "<td>" . $rowClients['id'] . "</td> ";
-                echo "<td>" . $rowClients['firstName'] . "</td> ";
-                echo "</tr>";
+                echo "<p> Prénom: " . $rowClients['firstName'] . "</p> ";
+                echo "<p> Nom de famille: " . $rowClients['lastName'] . "</p> ";
+                echo "<p> Date de naissance: " . $rowClients['birthDate'] . "</p> ";
+                echo "<p> Carte de fidélité: " . $rowClients['card'] . "</p> ";
+                if ($rowClients['card'] == 1){
+                    echo "<p> Numéro de cate: " . $rowClients['cardNumber'] . "</p> ";
+                }
+                echo "<br>";
             }
 
             while ($rowTypes = $resultTypes->fetch()) {
                 echo "<tr>";
-                echo "<td> Types de concert: <strong>" . $rowTypes['type'] . "</td> ";
+                echo "<td> Types de concert: <strong>  " . $rowTypes['type'] . "</td> ";
                 echo "</tr>";
             }
         ?> 

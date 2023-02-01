@@ -19,7 +19,7 @@ $stmp->bindParam(":username", $username);
 $stmp->execute();
 
 // Stockage des résultats
-$user = $stmp->fetch() ? : null;
+$user = $stmp->fetch() ?: null;
 
 // Vérification des informations d'identification
 if ($user && $password === $user['password']) {
